@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Слайдер картинок</title>
+<style>
+body {
+font-family: Arial;
+text-align: center;
+margin-top: 50px;
+}
+img {
+width: 300px;
+height: 300px;
+object-fit: cover;
+border: 1px solid black;
+margin-bottom: 20px;
+}
+button {
+padding: 10px 20px;
+font-size: 16px;
+margin: 0 10px;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div>
+<img id="sliderImg" src="img/1.jpg" alt="Слайд">
+</div>
+<button id="prevBtn">◀ Назад</button>
+<button id="nextBtn">Вперёд ▶</button>
+<script>
+let images = ["img/img1.jpg", "img/img2.jpg", "img/img3.jpg", "img/img4.jpg", "img/img5.jpg"];
+let currentIndex = 0;   
+let img = document.querySelector("#sliderImg");
+let nextBtn = document.querySelector("#nextBtn");
+let prevBtn = document.querySelector("#prevBtn");
+function showImage() {
+img.src = images[currentIndex];
+}
+nextBtn.onclick = function() {
+currentIndex++;
+if (currentIndex >= images.length) {
+currentIndex = 0;
+}
+showImage();
+};
+prevBtn.onclick = function() {
+currentIndex--;
+if (currentIndex < 0) {
+currentIndex = images.length - 1;
+}
+showImage();
+};
+</script>
+</body>
+</html>
